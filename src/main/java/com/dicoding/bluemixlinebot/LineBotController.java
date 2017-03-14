@@ -34,10 +34,10 @@ public class LineBotController
             @RequestHeader("X-Line-Signature") String aXLineSignature,
             @RequestBody String aPayload)
     {
-    	aXLineSignature = "Bearer 49iE6cyHfhdadnASVcbrLdsGP06r0NKRQ7tj+USr5cDQKFGiYP7UOdKX1opYU8OPwMb9xtT4/ifSqmg6/WWLLD/Gl0FaHilWEVeVu0iEZbdC620jI9JSKgstxgT2nW3hCI95uP5hIagD7ARhI3xgsgdB04t89/1O/w1cDnyilFU=";
-        final String text=String.format("The Signature is: %s",
+
+    	final String text=String.format("The Signature is: %s",
                 (aXLineSignature!=null && aXLineSignature.length() > 0) ? aXLineSignature : "N/A");
-        
+
         System.out.println(text);
         final boolean valid=new LineSignatureValidator(lChannelSecret.getBytes()).validateSignature(aPayload.getBytes(), aXLineSignature);
         System.out.println("The signature is: " + (valid ? "valid" : "tidak valid"));
